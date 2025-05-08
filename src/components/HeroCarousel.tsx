@@ -54,7 +54,7 @@ const HeroCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 7000); // Longer interval for better reading experience
 
     return () => clearInterval(interval);
   }, []);
@@ -78,30 +78,30 @@ const HeroCarousel = () => {
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4 animate-slide-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                 <span className="h-1 w-12 bg-yellow-400"></span>
-                <div className="bg-blue-800/80 rounded-full p-2 text-white">
+                <div className="bg-blue-800/80 rounded-full p-2 text-white animate-float">
                   {slide.icon}
                 </div>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in opacity-0 font-times" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in opacity-0 font-playfair leading-tight" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 {slide.title}
               </h1>
               <p className="text-lg md:text-xl text-gray-100 mb-6 animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
                 {slide.description}
               </p>
               
-              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 mb-8 animate-fade-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-                <ul className="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-5 mb-8 animate-scale-in opacity-0" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+                <ul className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {slide.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-white">
-                      <span className="h-1.5 w-1.5 rounded-full bg-yellow-400"></span>
-                      <span>{feature}</span>
+                    <li key={idx} className="flex items-center gap-3 text-white" style={{ animationDelay: `${0.6 + idx * 0.1}s`, animationFillMode: 'forwards' }}>
+                      <span className="h-2 w-2 rounded-full bg-yellow-400"></span>
+                      <span className="animate-fade-in opacity-0" style={{ animationDelay: `${0.6 + idx * 0.1}s`, animationFillMode: 'forwards' }}>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               
-              <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-                <Button className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-6 rounded-md text-lg">
+              <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+                <Button className="bg-blue-700 hover:bg-blue-600 text-white px-8 py-6 rounded-md text-lg btn-shine">
                   {slide.ctaText}
                 </Button>
               </div>
@@ -110,7 +110,8 @@ const HeroCarousel = () => {
           <img 
             src={slide.image} 
             alt={slide.alt} 
-            className="object-cover w-full h-full" 
+            className="object-cover w-full h-full transform transition-transform duration-1000 scale-100"
+            style={{transform: index === currentSlide ? 'scale(1.05)' : 'scale(1)'}}
           />
         </div>
       ))}
@@ -122,7 +123,7 @@ const HeroCarousel = () => {
             onClick={() => goToSlide(idx)}
             className={cn(
               "w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white font-semibold transition-all",
-              idx === currentSlide ? "bg-blue-700 border-blue-700" : "bg-transparent hover:bg-blue-700/50"
+              idx === currentSlide ? "bg-blue-700 border-blue-700 animate-scale-in" : "bg-transparent hover:bg-blue-700/50"
             )}
           >
             0{idx + 1}
