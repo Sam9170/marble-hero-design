@@ -82,7 +82,7 @@ const HeroCarousel = () => {
                   {slide.icon}
                 </div>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in opacity-0 font-times" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
                 {slide.title}
               </h1>
               <p className="text-lg md:text-xl text-gray-100 mb-6 animate-fade-in opacity-0" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>

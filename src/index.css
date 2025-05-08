@@ -94,6 +94,11 @@
   }
 }
 
+/* Times New Roman font for headings */
+.font-times {
+  font-family: "Times New Roman", Times, serif;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
